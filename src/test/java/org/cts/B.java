@@ -23,7 +23,7 @@ public class B {
 	public static final String AUTOMATE_KEY = "TzicSXx6PMLDHtpY3kgp";
 	public static final String URL = "https://" + USERNAME + ":" + AUTOMATE_KEY + "@hub-cloud.browserstack.com/wd/hub";
 
-	public static void getBrowser(String Platform, String Browser) throws MalformedURLException {
+	public static void getBrowser(String Platform, String Browser) throws Exception {
 		DesiredCapabilities caps = new DesiredCapabilities();
 
 		switch (Platform) {
@@ -71,6 +71,9 @@ public class B {
 		default:
 			System.out.println("invalid platform");
 			break;
+		}
+		if (driver==null) {
+			throw new Exception("Please enter valid Browser Platform Combination");
 		}
 
 	}

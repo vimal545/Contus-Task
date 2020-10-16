@@ -13,7 +13,7 @@ import cucumber.api.java.Before;
 public class Hooks extends B {
 
 	@Before
-	public void bf() throws MalformedURLException {
+	public void bf() throws Exception {
 		String platform = System.getProperty("platform", "Desktop");
 		String browser = System.getProperty("browser", "chrome");
 		getBrowser(platform, browser);
@@ -23,7 +23,7 @@ public class Hooks extends B {
 	@After
 	public void afe(Scenario sc) {
 
-		if (sc.isFailed()) {
+		if (sc.isFailed()&&driver!=null) {
 
 			TakesScreenshot tk = (TakesScreenshot) driver;
 			byte[] ss = tk.getScreenshotAs(OutputType.BYTES);
